@@ -1,1 +1,1 @@
-# Pr-ctica2-Diodo-Zener-
+# Practica2-Diodo-Zener-
