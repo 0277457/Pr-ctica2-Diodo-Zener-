@@ -1,0 +1,332 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%  TEMPLATE IEEE PARA ENTREGA DE INFORMES  %%%% 
+%%%% DE LABORATORIO ELECTRÓNICA UASLP-FACULTAD DE INGENIERÍA, MÉXICO    %%%%%%%%%%%%%
+\documentclass[journal]{IEEEtran}
+\IEEEoverridecommandlockouts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%% PRINCIPALES PAQUETES %%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage[spanish, es-tabla]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{wrapfig}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{adjustbox}
+\usepackage{nccmath}
+\usepackage{subfigure}
+\usepackage{amsfonts,latexsym} % para tener disponibilidad de diversos simbolos
+\usepackage{enumerate}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{threeparttable}
+\usepackage{array,colortbl}
+\usepackage{ifpdf}
+\usepackage{rotating}
+\usepackage{cite}
+\usepackage{stfloats}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{multirow}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% CREAR Y REESCRIBIR ALGUNOS COMANDOS %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}  %% Se crea un nuevo tipo de columna llamada P.
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
+\newcommand{\ctt}{\centering\scriptsize\textbf} %%\ctt abrevia el comando \centering\scriptsize\textbf
+\newcommand{\dtt}{\scriptsize\textbf} %%\dtt abrevia el comando \scriptsize\textbf
+\renewcommand\IEEEkeywordsname{Palabras clave}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor} %% Con este comando se especifican como pueden seprarse las sílabas adecuadamente en caso una palabra quede en dos lineas diferentes de texto
+
+\graphicspath{ {figs/} }  %%Ruta donde se encuentran las imágenes, que esté vacio indica que las imagenes están dentro de la misma carpeta que contiene el archivo .tex
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% ENCABEZADO DE LAS PÁGINAS TIPO UNIVERSIDAD CENTRAL %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\MYhead}{\smash{\scriptsize
+\hfil\parbox[t][\height][t]{\textwidth}{\centering
+\begin{picture}(0,0) \put(-0,-30){\includegraphics[width=20mm]{logoing}} \end{picture} \hspace{6.4cm}
+REPORTE DE PRÁCTICA DE LABORATORIO \hspace{5.15cm} Versión 1\\
+\hspace{2.8cm} LABORATORIO DE ELECTRÓNICA. ÁREA MECÁNICA ELÉCTRICA, FACULTAD DE INGENIERÍA - UASLP \hspace{1cm} Periodo 2020-2021 I\\
+}\hfil\hbox{}}}
+\makeatletter
+% normal pages
+\def\ps@headings{%
+\def\@oddhead{\MYhead}%
+\def\@evenhead{\MYhead}}%
+% title page
+\def\ps@IEEEtitlepagestyle{%
+\def\@oddhead{\MYhead}%
+\def\@evenhead{\MYhead}}%
+\makeatother
+% make changes take effect
+\pagestyle{headings}
+% adjust as needed
+\addtolength{\footskip}{0\baselineskip}
+\addtolength{\textheight}{-1\baselineskip}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% INICIO DEL DOCUMENTO %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% TÍTULO DEL DOCUMENTO %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{\textcolor{blue}{P R Á C T I C A 2\hspace{10cm}DIODO ZENER }}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% AUTOR %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\author{Alba Parada Juan Daniel\\
+				\textit{judalpa@hotmail.com}\\
+				Instructor:REYNOSO IBARRA RAUL	\\
+				}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%% RESUMEN %%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+Durante el desarrollo de esta práctica se estudiará el comportamiento de un diodo zener, así como sus características en manuales y sus aplicaciones y diferencias con el diodo normal, se hará una serie de arreglos para analizar su reacción a distintas formas de corriente.
+\end{abstract}
+% En el resumen no se recomienda colocar citaciones bibliográficas.
+%%%%%%%%%%%%%%%%%%%%%%
+%%% PALABRAS CLAVE %%%
+%%%%%%%%%%%%%%%%%%%%%%
+\begin{IEEEkeywords}
+ diodo, diodo Zener, ánodo, cátodo, La corriente máxima,  rodilla de la curva
+ Corriente de Fuga,Tensión de Ruptura,Corriente de vértice.
+\end{IEEEkeywords}
+%%%%%%%%%%%%%%%%%%%%%%
+%\IEEEpeerreviewmaketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% PRIMERA SECCIÓN DEL DOCUMENTO %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textcolor{blue}{\section{Antecedentes teóricos.}}
+\IEEEPARstart Un diodo Zener es un dispositivo cuya contaminación se realiza de un modo que hace que la característica de voltaje de avalancha o ruptura sea inclinada, (o diodo de avalancha). Si el voltaje inverso supera al voltaje de ruptura, el diodo Zener normalmente no será destruido. La curva característica típica del diodo Zener se muestra en la figura 1.
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.55]{1.PNG}
+\caption{Curva Característica del diodo Zener.} 
+\label{1}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.3]{2a.png}
+\caption{Símbolo eléctrico del diodo Zener.} 
+\label{2}
+\end{figure}
+Los diodos Zener o diodos de avalancha son diodos semiconductores de unión PN cuyas propiedades están controladas en las zonas de polarización inversa que se muestra en la figura \ref{1} lo que los hacen muy útiles en numerosas aplicaciones.
+Sus características  son similares a la de los diodos semiconductores normales. La característica inversa, presenta una región en la cual la tensión permanece constante y con una corriente inversa tendiendo a infinito negativo. La tensión Zener de cualquier diodo está controlado por la cantidad del dopado aplicado en el proceso de fabricación. En la mayoría de las aplicaciones, los diodos Zener trabajan en la región de polarización inversa. 
+ 
+ 
+ 
+\subsubsection{Hoja de características del diodo Zener}: \par
+Parámetros importantes para la elección del diodo. 
+\begin{itemize}
+    \item[a)] Tipo de dispositivo con el número genérico o el número del fabricante. 
+    \item[b)]Tensión Zener nominal (tensión de ruptura por avalancha).
+    \item[c)]Tolerancia de tensión.
+    \item[d)]Máxima disipación de potencia (a 25º C). 
+    \item[e)]Corriente de prueba IZT .  
+    \item[f)]Corriente de vértice. 
+    \item[g)]Máxima temperatura en la unión 
+    \item[h)]Coeficiente de temperatura 
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% SEGUNDA SECCIÓN DEL DOCUMENTO %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textcolor{blue}{\section{Descripción de la práctica}}
+Mientras la disipación de energía en el Zener no exceda algún valor máximo permitido determinado por el tamaño, forma y capacidad de disipación de calor del Zener, el proceso de ruptura inversa no es catastrófico. 
+ La ruptura inversa no destruye al Zener, la ruptura inversa es análoga a la conducción de corriente en la dirección de polarización directa. La diferencia principal entre el estado de ruptura inversa del Zener y su estado de polarización directa, es la rapidez con la que ocurre la transición o ruptura inversa. 
+ Se pueden fácilmente analizar aquellos circuitos que contengan un Zener utilizando el método gráfico.
+ 
+ \textcolor{blue}{\section{Desarrollo}}
+En la figura \ref{3} un diodo Zener con VZX = 3 V está conectado a un circuito resistivo que tiene tendencia de operar al Zener en su región de polarización inversa. Utilizando sólo el diagrama del circuito, no resulta evidente si el Zener está en su región de operación de polarización inversa o ruptura inversa. 
+ \begin{figure}[H]
+\centering
+\includegraphics[scale=0.55]{3.PNG}
+\caption{ Circuito de polarización del Zener.} 
+\label{3}
+\end{figure}
+El diodo Zener es el único elemento no lineal en el circuito, se desconecta en forma temporal y se determina el equivalente de Thévenin del resto del circuito. 
+ 
+En este caso el voltaje del circuito abierto resistivo está formado por V0 y los tres resistores éste está dado por: 
+ \begin{equation}
+     V_{Th}=V_{0}\frac{R_{2}}{R_{1}+R_{2}}
+ \end{equation}
+Dando un voltaje de thevenin de 6volt.\par
+\subsubsection{Evaluación del circuito mediante el equivalente de Thévenin}
+Para que el diodo Zener se polarice correctamente, el voltaje de Thévenin debe ser mayor o igual al voltaje del Zener (VZ), en la figura \ref{4} se muestra el circuito de Thévenin el cual nos permite observar que el voltaje de Thévenin es mayor que el voltaje del Zener, lo que esto nos indica que está en estado de conducción o de ruptura inversa.\par
+Para el circuito de análisis, no es necesaria la simplificación completa del circuito, ya que el voltaje de Thévenin es conocido mediante un simple divisor de voltaje, pero para circuitos más complejos puede ser de mucha ayuda. 
+ \begin{figure}[H]
+\centering
+\includegraphics[scale=0.55]{4.PNG}
+\caption{  Circuito de Thévenin.} 
+\label{4}
+\end{figure}
+\subsection{Circuito regulador con Zener en combinación con el rectificador de onda completa}\par
+Para observar el comportamiento como regulador de voltaje del Zener, conecte el circuito de la figura 2\ref{5}, los cambios de carga realícelos mientras el circuito está energizado.  
+ La fuente de rectificación deberá entregar a ambas cargas como máximo 50mA
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% TERCERA SECCIÓN DEL DOCUMENTO %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textcolor{blue}{\section{diseño del circuito}}
+%%%%%%%%%%%%%
+\subsection{Diodo Zener}  El primer paso de diseño es seleccionar el voltaje  del Zener. Si el Zener ha de llevar acabo su función de regulador, deberá conservarse en todo tiempo en la región de ruptura inversa.considerando que el voltaje del Zener sera igual al de la carga y tiene que ser mayor al valor de ruptura del zener en este caso será de 3 volts.
+\subsection{Corriente a través del Zener}
+La corriente del Zener deberá ser siempre diferente de cero, bajo toda condición de carga. La elección de la mínima depende de las características específicas del Zener y es algo arbitraria. En muchos Zener es suficiente una corriente inversa mínima aproximadamente de 1mA. Dando una corriente por la resistencia de aproximadamente 51mA considerando la corriente de 1mA en el diodo
+\subsection{Capacitor}
+ Su valor deberá ser lo suficientemente grande para hacer que el voltaje de rizo  sea en verdad despreciable, en comparación con el valor promedio de CD. Como mínimo, el rizo de Vc debe ser lo suficientemente pequeño para que el Zener se conserve en ruptura inversa, incluso al final del intervalo de descarga del capacitor. 
+ \subsection{Cargas}
+ La carga estará determinada por la corriente IL y por el voltaje de CD, así que la carga por ley de óhm quedará de la siguiente forma: 
+ \begin{equation}
+     Carga,total=carga1+carga2=2\frac{V_L}{I_L}=2\frac{10volt}{51mA}=400\approx440ohm
+ \end{equation}
+\textcolor{blue}{\section{Desarrollo de la práctica}}
+\begin{table}[H]
+\centering
+\caption{Material utilizado práctica}
+\label{table2}
+\begin{tabular}{c c c}\hline\hline
+\textbf{Material} & \textbf{Descripción} & \textbf{Cantidad}\\ \hline
+$Fuente$ & fuente de corriente alterna 10 volts & \verb|1| \\
+$puente de diodos$ & diodos de silicio & \verb|1|\\
+$diodo zener & diodo regulador 1N4372A & \verb|1|\\
+$resistencias$ & de 100 o 220ohm & \verb|3| \\\hline \hline
+\end{tabular}
+\end{table}
+En la imagen \ref{5} podemos notar que el voltaje pico tanto para el circuito con el diodo zener y el que no lo tiene es de 10.4 volts rms lo cual equivale a 14.7 volts en voltaje pico. 
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.35]{5.PNG}
+\caption{  Circuito regulador con zener.} 
+\label{5}
+\end{figure}
+El cual usamos para llenar las tablas \ref{table2} y \ref{table3}
+\begin{table}[H] 
+\centering
+\caption{}
+\resizebox{9cm}{!}{
+\label{table2}
+\begin{tabular}{cccccc}
+\textbf{(sin diodo Z)} & \textbf{voltaje pico} & \textbf{voltaje de carga} & \textbf{voltaje de rizo} &           &           \\
+\textbf{carga 1 y 2}   & 14.7                  & 9.03                      & 9.03                     & \textbf{} & \textbf{} \\
+\textbf{carga 2}       & 14.7                  & 7.59                      & 7.59                     &           &           \\
+\textbf{}              &                       &                           &                          &           &           \\
+\textbf{}              &                       &                           &                          &           &          
+\end{tabular}}
+\end{table}
+donde 
+\begin{equation}
+V_{p}=\sqrt{2}v_{rms}
+\end{equation}
+\begin{equation}
+ V_{max}=V_{rizo}
+\end{equation}
+
+\begin{table}[H] 
+\centering
+\caption{}
+\resizebox{9cm}{!}{
+\label{table3}
+\begin{tabular}{cccccc}
+\textbf{(con diodo Z)} & \textbf{voltaje pico} & \textbf{voltaje de carga} & \textbf{voltaje de rizo} &           &           \\
+\textbf{carga 1 y 2}   & 14.7                  & 3.21                      & 11.49                    & \textbf{} & \textbf{} \\
+\textbf{carga 2}       & 14.7                  & 3.18                      & 11.52                    &           &           \\
+\textbf{}              &                       &                           &                          &           &           \\
+\textbf{}              &                       &                           &                          &           &          
+\end{tabular}}
+\end{table}
+donde:
+\begin{equation}
+    V_{rizo}=V_{max}-v_{carga}
+\end{equation}
+
+\par
+\vspace{7cm}
+\textcolor{blue}{\section{Simulacón.}}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.55]{6.PNG}
+\caption{carga 1 y 2 sin diodo Zener.} 
+\label{6}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.55]{7.PNG}
+\caption{carga 2 sin diodo Zener.} 
+\label{7}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.55]{8.PNG}
+\caption{carga 1 y 2 con diodo Zener.} 
+\label{8}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.55]{9.PNG}
+\caption{carga 2 con diodo Zener.} 
+\label{9}
+\end{figure}
+
+\textcolor{blue}{\section{Conclusiones}}
+Durante el desarrollo de la práctica aprendimos sobre el diodo Zener, sus funciones como regulador de voltaje, como diodo normal según su polarización, lo vimos en funcionamiento lo cual nos sirve para generar un concepto de aplicación adecuada en un futuro. Aprendimos que los valores de voltaje Zener o corriente del Zener se encuentran en hojas técnicas de los mismos y que se eligen según la necesidad de mi circuito ya sea como regulador de voltaje o como diodo normal. Aprendí la diferencia de manufactura en los diodos Zener y porque actúa distinto a un diodo normal. 
+\textcolor{blue}{\section{Preguntas}}
+\vspace{5mm}
+\textbf{¿Cuál es la característica de un diodo Zener?}\par
+Si el voltaje inverso supera al voltaje de ruptura, el diodo Zener normalmente no será destruido.Y mantiene entre sus terminales un voltaje constante.\par \vspace{5mm}
+\textbf{Del diodo Zener utilizado en la práctica ¿cuáles son los parámetros importantes de su hoja de características?}\par
+\begin{itemize}
+    \item{}Tensión Zener nominal (tensión de ruptura por avalancha).
+    \item{}Tolerancia de tensión.
+    \item{}Corriente de prueba IZT .  
+\end{itemize}\par \vspace{5mm}
+
+\textbf{Investigue el método gráfico para determinar si el diodo está en región de polarización inversa.} \par
+respuesta\par \vspace{5mm}
+Como muestra la figura \ref{1} si se energiza el diodo, se mide el voltaje en sus terminales  y si se observa que el multímetro marca un voltaje mayor a .7 volts y más parecido al voltaje del Zener que obtuvimos de la hoja características entonces esta en polarización inversa, de no ser asi esta en polarización directa.\par
+Otra forma es utilizar un ohmímetro para determinar el sentido de la corriente directa. Se utiliza este pequeño voltaje para ver en qué sentido se dirige la corriente. Si el ohmímetro mide una resistencia finita, significa que el diodo está conduciendo una pequeña corriente en la dirección de la corriente directa, y la pata +roja del medidor está en contacto con el ánodo. Si la resistencia se lee como O.L (iniciales de overload), el diodo no está conduciendo corriente. Esto significa que la punta de prueba roja + toca el cátodo.
+
+\textbf{¿Cuál es la característica exponencial normal  V-I, dada en polarización directa?}\par
+Como muestra la figura \ref{1} en la parte derecha la gráfica en polarización directa funciona en forma exponencial permitiendo el flujo casi libre de corriente a partir de aproximadamente 0.7 volts, dependiendo el diodo. \par\vspace{5mm}
+\textbf{Existen otras clases de diodos especiales, anótelos y su aplicación.}\par
+Diodo emisor de luz (LED): diodo que produce luz cuando se encuentra polarizado. Usado en circuitos básicos ya que es fácil identificar si es polarización inversa o directa.
+Foto-diodo: cuando es polarizado en manera directa actúa igual que un diodo normal, pero cuando esta polarizado de manera inversa la intensidad de corriente que circula depende de la iluminación que se le dé a la unión P-N.
+Diodo Schottky: proporciona conmutaciones muy rápidas entre los estados de conducción directa e inversa teniendo una tensión umbral baja.
+Diodo Varicap: es un diodo de capacidad variable, es decir los calores de la capacidad varían según la tensión se le dé. Siendo usados en sintonizadores de TV o modulación de frecuencias en transmisores de FM.
+\par\vspace{5mm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% BIBLIOGRAFIA %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{thebibliography}{1}
+
+\bibitem{imagenes}
+Youtube, canal Arturo Pérez. \url{https://youtu.be/IhvF6iY7n5https://www.youtube.com/watch?feature=youtu.be&v=denwdkPZ0y4&app=desktopk}. Recuperado el 12 de Febrero de 2020.
+\bibitem{link}
+Overleaf. \url{https://www.overleaf.com/}. Recuperado el 12 de Febrero de 2020.
+\bibitem{formato}
+Manual de laboratorio de Electronica 1.
+\bibitem{link}
+Los Diodos especiales, Ing.Raúl Ortega Martínez \url{https://es.slideshare.net/LuisRamos452/los-diodos-especiales}. Recuperado el 12 de Febrero de 2020.
+\bibitem{link}
+Fundamentos de los diodos \url{https://www.fceia.unr.edu.ar/eca1/files/teorias/Diodos%20-%202012.pdf}. Recuperado el 12 de Febrero de 2020.
+\end{thebibliography}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% FIN DEL DOCUMENTO %%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
